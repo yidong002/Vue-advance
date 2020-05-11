@@ -14,14 +14,23 @@
         .nav{
             padding-left: 2px;
             width: 100%;
-            border: thistle 1px solid;
         }
         .content{
-            width: 60%;
+            width: 100%;
             text-align: center;
-            margin: 10px 120px;
-            border: springgreen 1px solid;
         }
+        .table{
+            width: 100%;
+        }
+        .table tr td{
+            color: rgb(125, 122, 126);
+            font-size: 20px;
+            text-align: center;
+            margin: 5px 20px;
+            border-bottom: gainsboro solid 2px ;
+            padding-top: 50px;
+        }
+
     </style>
 </head>
 <body>
@@ -32,6 +41,20 @@
             <button @click="add()">增加商品</button>
             <button @click="remove()">删除商品</button>
         </div>
+        <!-- <el-table 
+        :data="tableData"
+        style="width: 100%;">
+            <el-table-column
+            prop='index'
+            label='商品序号'
+            >商品序号</el-table-column>
+            <el-table-column
+            prop='name''
+            lable='商品名称'>商品名称</el-table-column>
+            <el-table-column
+            prop='price'
+            label='商品价格'>商品价格</el-table-column>
+        </el-table> -->
         <div class="content">
             <table class="table">
                 <template v-for="(item,index) in goods">
@@ -54,6 +77,10 @@
         data:{
             name:"",
             price:"",
+            // tableData:[
+            //     {index:1,name:'99%黄金',price:'1000/g'},
+            //     {index:2,name:'铂金项链',price:'100000￥'}
+            // ]
             title:[
                 '商品序号',
                 '商品名称',
