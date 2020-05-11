@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发微博</title>
+    <link rel="stylesheet" href="./style/font/iconfont.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        li{
+        list-style: none;
+        margin-bottom: 20px;
+        height: 80px;
+        width: 90px;
+        border: orange 2px solid;
+        border-radius: 20px;
+        border-bottom: thick;
+        }
+        button{
+            background-color: orangered;
+            border: peru 4px solid;
+            border-radius: 5px;
+            margin-left: 40px;
+        }
+        button:active{
+            background-color: transparent;
+            /* display: none; */
+        }
+        textarea{
+            height: 100px;
+            width: 600px;
+            border: wheat 2px solid;
+            border-radius: 30px;
+            border-bottom: unset;
+            font-size: 20px;
+            text-align: center;
+            color: yellowgreen;
+            margin: 5px 20px;
+        }
+        span{
+            color: violet;
+            font-size: 18px;
+        }
+        span:active{
+            background-color: transparent;
+        }
+        #app{
+            height: 400px;
+            width: 800px;
+            border: thistle 1px solid;
+            margin: 0 auto;
+        }
+        .title{
+            display: flex;
+            flex-direction: row;
+            margin-left: 5px;
+        }
+        .bottomLink{
+            display: flex;
+            flex-direction: row;
+            padding-left: 30px;
+        }
+        .bottomLink a{
+            margin-left: 5px;
+            
+        }
+        .iconfont{
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="title">
+            <div style="color: indigo; font-size: 10px; width: 24%;">有什么新鲜事要告诉大家</div>
+            <div style="color: lightcoral; font-size: 10px; width: 56%;">截至10月24时，全国新增17例确诊病例>>热门微博</div>
+        </div>
+        <textarea v-model="message"></textarea>
+        <div class="bottomLink ">
+            <a href="#" class="iconfont icon-biaoqing">表情</a>
+            <a href="#" class="iconfont icon-tupian">图片</a>
+            <a href="#" class="iconfont icon-video-">视频</a>
+            <a href="#" class="iconfont icon-jinghao">话题</a>
+            <a href="#" class="iconfont icon-shandian">头条文章</a>
+            <a href="#">...</a>
+            <button @click="add()" >发微博</button>
+        </div>
+        <ul>
+            <!-- <li v-for='item in inform'>{{item}}</li> -->
+            <li v-for="(item,index) in inform">
+                <p>{{item}}<span @click="del(index)">x</span></p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data:{
+            message:'',
+            inform:[
+                "这是第一条微博",
+                "这是第二条微博"
+            ]
+        },
+        methods:{
+            add:function(){
+                //unshift()把第一个元素添加到数组的开头，并返回新数组的长度
+                this.inform.unshift(this.message);
+            },
+            del:function(index){
+                //splice()删除第index后的第一个元素
+                this.inform.splice(index,1);
+            }
+        }
+       
+    })
+</script>
+</html>

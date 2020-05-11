@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品的增删</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #app{
+            margin: 0 auto;
+            width: 660px;
+            height: 600px;
+        }
+        .nav{
+            padding-left: 2px;
+            width: 100%;
+            border: thistle 1px solid;
+        }
+        .content{
+            width: 60%;
+            text-align: center;
+            margin: 10px 120px;
+            border: springgreen 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="nav">
+            商品名称：<input type="text" v-model="name">
+            商品价格：<input type="text" v-model="price">
+            <button @click="add()">增加商品</button>
+            <button @click="remove()">删除商品</button>
+        </div>
+        <div class="content">
+            <table class="table">
+                <template v-for="(item,index) in goods">
+                    <tr v-if="index == 0">
+                        <td v-for="text in title">{{text}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{index+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                    </tr>
+                </template>
+            </table>
+        </div>    
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data:{
+            name:"",
+            price:"",
+            title:[
+                '商品序号',
+                '商品名称',
+                '商品价格',
+            ],
+            goods:[
+                {name:'99%黄金',price:'1000/g'},
+                {name:'铂金项链',price:'100000￥'}
+            ]
+        },
+        methods:{
+            add:function(){
+                //获取输入文本
+                let str = {name:this.name,price:this.price};
+                //添加数据
+                this.goods.unshift(str);
+            },
+            remove:function(index){
+                // let str = {name:this.name,price:this.price};
+                this.goods.splice(index,1)
+            }
+        }
+    })
+</script>
+</html>
