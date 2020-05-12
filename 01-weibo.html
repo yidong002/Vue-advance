@@ -13,12 +13,13 @@
         li{
         list-style: none;
         margin-bottom: 20px;
-        height: 80px;
-        width: 90px;
-        border: orange 2px solid;
-        border-radius: 20px;
-        border-bottom: thick;
+        height: 60px;
+        width: 100%;
+        border-bottom: 1px gainsboro solid;
+        display: flex;
+        justify-content: space-between;
         }
+        
         button{
             background-color: orangered;
             border: peru 4px solid;
@@ -31,14 +32,14 @@
         }
         textarea{
             height: 100px;
-            width: 600px;
+            width: 750px;
             border: wheat 2px solid;
             border-radius: 30px;
             border-bottom: unset;
             font-size: 20px;
             text-align: center;
             color: yellowgreen;
-            margin: 5px 20px;
+            margin-left:20px ;
         }
         span{
             color: violet;
@@ -56,12 +57,12 @@
         .title{
             display: flex;
             flex-direction: row;
-            margin-left: 5px;
+            margin-left: 50px;
+            justify-content: space-between;
         }
         .bottomLink{
             display: flex;
             flex-direction: row;
-            padding-left: 30px;
         }
         .bottomLink a{
             margin-left: 5px;
@@ -91,7 +92,8 @@
         <ul>
             <!-- <li v-for='item in inform'>{{item}}</li> -->
             <li v-for="(item,index) in inform">
-                <p>{{item}}<span @click="del(index)">x</span></p>
+                <p>{{item}}</p>
+                <span @click="del(index)">删除</span>
             </li>
         </ul>
     </div>

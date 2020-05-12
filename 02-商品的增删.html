@@ -64,6 +64,7 @@
                         <td>{{index+1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.price}}</td>
+                        <td><button @click="remove(index)">删除</button></td>
                     </tr>
                 </template>
             </table>
@@ -84,6 +85,7 @@
                 '商品序号',
                 '商品名称',
                 '商品价格',
+                '删除商品'
             ],
             goods:[
                 {name:'99%黄金',price:'1000/g'},
